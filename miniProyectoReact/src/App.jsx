@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+
+
+
+
 
 function App() {
   // La variable data es la que va a almacenar los datos de "stays.json" y setData nos ayudará a guardar esos datos en esa variable. Es necesario que inicialicemos esa variable como un array vacío para evitar errores.
@@ -27,6 +32,9 @@ function App() {
   console.log(data);
   return (
     <>
+    <Navbar></Navbar>
+
+
     {/* Aquí te dejo un ejemplo de cómo podrías imprimir varios elementos a la vez. */}
       {data.map((el, i) => {
         return <h1 key={i}>{el.city}</h1>;
