@@ -1,0 +1,44 @@
+.card-text {
+    font-size: 12px;
+    /* Ajusta el tamaño de la letra según tus preferencias */
+}
+
+.card-text-title {
+    color: #333;
+    text-align: right;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+}
+
+.card-text-host {
+    color: #4F4F4F;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+
+}
+
+.title-up {
+    color: #333;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.img-style {
+    border-radius: 24px;
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+
+    
+    flex-shrink: 0;
+
+}

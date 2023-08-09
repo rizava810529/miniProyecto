@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-
+import Select from "./components/select/Select"
 
 
 
@@ -25,20 +25,60 @@ function App() {
 
   // Este Hook te va a ejecutar la función getData cada vez que la página se renderice.
   useEffect(() => {
-     getData();
+    getData();
   }, []);
 
   // Puedes ver la variable data en consola.
   console.log(data);
   return (
     <>
-    <Navbar></Navbar>
+      <Navbar></Navbar>
+      <div className="app m-5 ">
+        <h1 className="title-up">Stays in Finland</h1>
+        <div className="card-container ">
+          <div className="row ">
+            {data.slice(0, 6).map((listing, index) => (
+              <div key={index} className="col-md-4 mb-4">
+                <div className="card h-100" style={{ height: "60%" }}>
+                  <div className="bg-image hover-overlay ripple img-style rounded-8 border" data-mdb-ripple-color="light">
+                    <img
+                      src={listing.photo}
+                      alt={listing.title}
+                      className="img-fluid"
+                      style={{ aspectRatio: "5/3" }}
+
+                    />
+                    <a href="#!">
+                      <div
+                        className="mask"
+                        style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+                      ></div>
+                    </a>
+                  </div>
+                  <div className="card-body d-flex flex-column ">
+
+                    <div><p className="card-text">{listing.city}, {listing.country}</p></div>
+                    <div> <p className="card-text">{listing.type}</p></div>
+                    <div><p className="card-text">Rating: {listing.rating}</p></div>
+
+                    <div className="d-flex justify-content-between align-items-center">{listing.beds !== null && <p className="card-text">Beds: {listing.beds}</p>}
+                      {listing.superHost &&
+                        <p className="card-text-host w-45 rounded-8 border">Superhost</p>}</div>
+
+                    <div><h2 className="card-text-title d-flex justify-content-start align-items-center">{listing.title}</h2></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <Select></Select>
+      
 
 
-    {/* Aquí te dejo un ejemplo de cómo podrías imprimir varios elementos a la vez. */}
-      {data.map((el, i) => {
-        return <h1 key={i}>{el.city}</h1>;
-      })}
+
+
     </>
   );
 }
