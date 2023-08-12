@@ -34,6 +34,7 @@ export default function Navbar() {
                     <div className="navbar-brand">
                         <img src={logo} className="img-fluid" alt="Logo" />
                     </div>
+                    {/* modal  */}
                     <div className="ml-auto">
                         <Button variant="primary" className="mr-2" onClick={openModal1}>Abrir Modal 1</Button>
                         <Button variant="secondary" onClick={openModal2}>Abrir Modal 2</Button>
@@ -44,7 +45,7 @@ export default function Navbar() {
 
             <Modal show={showModal1} onHide={closeModal1}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal 1</Modal.Title>
+                    <Modal.Title>Edit your search</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='h-100 d-flex justify-content-center align-items-center'>
@@ -58,7 +59,7 @@ export default function Navbar() {
                                 aria-expanded="false"
                                 data-mdb-dropdown-animation="off"
                             >
-                                 Location
+                                Location
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownExampleAnimation">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -84,22 +85,7 @@ export default function Navbar() {
                             </ul>
                         </div>
                         <button type="button" class="btn btn-primary">Search</button>
-
-
-
-
-
-
-
-
                     </div>
-
-
-
-
-
-
-
 
                 </Modal.Body>
                 <Modal.Footer>
@@ -149,21 +135,7 @@ export default function Navbar() {
                             </ul>
                         </div>
                         <button type="button" class="btn btn-primary">Search</button>
-
-
-
-
-
-
-
-
                     </div>
-
-
-
-
-
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModal2}>Cerrar</Button>
