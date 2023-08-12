@@ -46,7 +46,62 @@ export default function Navbar() {
                 <Modal.Header closeButton>
                     <Modal.Title>Modal 1</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Contenido del Modal 1</Modal.Body>
+                <Modal.Body>
+                    <div className='h-100 d-flex justify-content-center align-items-center'>
+
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-primary dropdown-toggle"
+                                type="button"
+                                id="dropdownExampleAnimation"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                                data-mdb-dropdown-animation="off"
+                            >
+                                 Location
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownExampleAnimation">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-primary dropdown-toggle"
+                                type="button"
+                                id="dropdownExampleAnimation"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                                data-mdb-dropdown-animation="off"
+                            >
+                                Guests
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownExampleAnimation">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-primary">Search</button>
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModal1}>Cerrar</Button>
                 </Modal.Footer>
@@ -56,7 +111,60 @@ export default function Navbar() {
                 <Modal.Header closeButton>
                     <Modal.Title>Modal 2</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Contenido del Modal 2</Modal.Body>
+                <Modal.Body>
+                    <div className='h-100 d-flex justify-content-center align-items-center'>
+
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-primary dropdown-toggle"
+                                type="button"
+                                id="dropdownExampleAnimation"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                                data-mdb-dropdown-animation="off"
+                            >
+                                Location
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownExampleAnimation">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-primary dropdown-toggle"
+                                type="button"
+                                id="dropdownExampleAnimation"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                                data-mdb-dropdown-animation="off"
+                            >
+                                Guests
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownExampleAnimation">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-primary">Search</button>
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModal2}>Cerrar</Button>
                 </Modal.Footer>

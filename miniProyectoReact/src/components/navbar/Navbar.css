@@ -3,7 +3,25 @@
     font-family: Muli;
     
 }
-.style-seek{
 
-    
+/* mmodal*/
+/* Navbar.css */
+/* Navbar.css */
+/* Navbar.css */
+.custom-modal {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: center;
 }
+
+.modal-dialog {
+    width: 100vw;
+    margin: 0;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+}
+
