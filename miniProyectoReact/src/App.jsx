@@ -5,7 +5,6 @@ import Select from "./components/select/Select"
 
 
 
-
 function App() {
   // La variable data es la que va a almacenar los datos de "stays.json" y setData nos ayudará a guardar esos datos en esa variable. Es necesario que inicialicemos esa variable como un array vacío para evitar errores.
   const [data, setData] = useState([]);
@@ -74,6 +73,7 @@ function App() {
         </div>
       </div>
       <Select></Select>
+    
       
 
 
