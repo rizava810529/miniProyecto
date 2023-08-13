@@ -1,17 +1,10 @@
-.style {
-    color: #333;
-    font-family: Muli;
+.size {
+    width: 15px;
 
 }
 
-
-
-.tamaño {
-    height: 65%;
-}
-
-.tipography {
-    color: #333;
+.texto {
+    color: #4F4F4F;
     font-family: Muli;
     font-size: 14px;
     font-style: normal;

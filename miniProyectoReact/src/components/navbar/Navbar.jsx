@@ -3,21 +3,32 @@ import logo from "../../img/logo.png";
 import "./Navbar.css";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import {
-    MDBContainer,
-    MDBNavbar,
-    MDBNavbarBrand,
-    MDBBtn
-} from 'mdb-react-ui-kit';
-import busqueda from "../../img/busqueda.png"
+import busqueda from "../../img/busqueda.png";
+import Location from '../location/Location';
+
+
+
 function Navbar() {
-    const [showModal, setShowModal] = useState(false);
+    const [showLocationModal, setShowLocationModal] = useState(false);
+    const [showGuestsModal, setShowGuestsModal] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState("Helsinki, Finland");
+    const [selectedGuests, setSelectedGuests] = useState("1 Guest");
 
-    const handleClose = () => setShowModal(false);
-    const handleShow = () => setShowModal(true);
+    const handleCloseLocationModal = () => setShowLocationModal(false);
+    const handleShowLocationModal = () => setShowLocationModal(true);
 
+    const handleCloseGuestsModal = () => setShowGuestsModal(false);
+    const handleShowGuestsModal = () => setShowGuestsModal(true);
 
+    const handleLocationSelect = (location) => {
+        setSelectedLocation(location);
+        handleCloseLocationModal();
+    };
 
+    const handleGuestsSelect = (guests) => {
+        setSelectedGuests(guests);
+        handleCloseGuestsModal();
+    };
 
     return (
         <>
@@ -26,24 +37,31 @@ function Navbar() {
                 <div className="container-fluid">
                     <a className="navbar-brand">
                         <img src={logo} className="img-fluid" alt="Logo" />
-
                     </a>
                     <form className="d-flex" role="search">
 
-                        {/* MODAL 1 */}
-                        <button type="button" className="btn white" onClick={handleShow}>
-                            Helsinki,Finland
+                        {/* Location Modal */}
+                        <button type="button" className="btn white" onClick={handleShowLocationModal}>
+                            {selectedLocation}
                         </button>
 
-                        <Modal show={showModal} onHide={handleClose} dialogClassName="modal-top modal-fullscreen tamaño">
+                        <Modal show={showLocationModal} onHide={handleCloseLocationModal} dialogClassName="modal-top modal-fullscreen tamaño">
                             <Modal.Header closeButton>
-                                <Modal.Title>Helsinki, Finland </Modal.Title>
+                                <Modal.Title className='typography'></Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                {/* Contenido del modal */}
+
+
+
+                                {/* Dropdown content Select location */}
+                                <Location></Location>
+
+
+
+                                
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
+                                <Button variant="secondary" onClick={handleCloseLocationModal}>
                                     Close
                                 </Button>
                                 <Button variant="primary">
@@ -52,22 +70,30 @@ function Navbar() {
                             </Modal.Footer>
                         </Modal>
 
-
-                        {/* modal 2 */}
-
-                        <button type="button" className="btn white" onClick={handleShow}>
-                            Add guests
+                        {/* Guests Modal */}
+                        <button type="button" className="btn white" onClick={handleShowGuestsModal}>
+                            {selectedGuests}
                         </button>
 
-                        <Modal show={showModal} onHide={handleClose} dialogClassName="modal-top modal-fullscreen tamaño">
+                        <Modal show={showGuestsModal} onHide={handleCloseGuestsModal} dialogClassName="modal-top modal-fullscreen tamaño">
                             <Modal.Header closeButton>
-                                <Modal.Title>Modal title</Modal.Title>
+                                <Modal.Title>Select Guests</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                contenido modal
+                                {/* Dropdown content */}
+                                <div className="btn-group">
+                                    <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                        {selectedGuests}
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li><button className="dropdown-item" type="button" onClick={() => handleGuestsSelect("1 Guest")}>1 Guest</button></li>
+                                        <li><button className="dropdown-item" type="button" onClick={() => handleGuestsSelect("2 Guests")}>2 Guests</button></li>
+                                        {/* Add more guests options here */}
+                                    </ul>
+                                </div>
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
+                                <Button variant="secondary" onClick={handleCloseGuestsModal}>
                                     Close
                                 </Button>
                                 <Button variant="primary">
@@ -78,28 +104,9 @@ function Navbar() {
 
                         {/* BTN search */}
                         <button className="btn white" type="submit"><img src={busqueda} className="img-fluid" alt="Logo" /></button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </form>
                 </div>
             </nav>
-
-
-
-
-
         </>
     );
 }
