@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import "./App.css"
 import Navbar from "./components/navbar/Navbar";
 import Select from "./components/select/Select"
+import Footer from "./components/footer/Footer";
+import  star from "./img/star.png"
+
+
+
+
 
 
 
@@ -44,7 +50,7 @@ function App() {
         <h1 className="title-up">Stays in Finland</h1>
         <div className="card-container ">
           <div className="row ">
-            {data.slice(0, 6).map((listing, index) => (
+            {data.slice(0, 12).map((listing, index) => (
               <div key={index} className="col-md-4 mb-4">
                 <div className="card h-100" style={{ height: "60%" }}>
                   <div className="bg-image hover-overlay ripple img-style rounded-8 border" data-mdb-ripple-color="light">
@@ -66,7 +72,7 @@ function App() {
 
                     <div><p className="card-text">{listing.city}, {listing.country}</p></div>
                     <div> <p className="card-text">{listing.type}</p></div>
-                    <div><p className="card-text">Rating: {listing.rating}</p></div>
+                    <div><p className="card-text"><img src={star} className="img-fluid" alt="star" />: {listing.rating}</p></div>
 
                     <div className="d-flex justify-content-between align-items-center">{listing.beds !== null && <p className="card-text">Beds: {listing.beds}</p>}
                       {listing.superHost &&
@@ -80,7 +86,7 @@ function App() {
           </div>
         </div>
       </div>
-      <Select></Select>
+      <Footer/>
     
       
 
