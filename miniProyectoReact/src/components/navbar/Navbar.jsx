@@ -12,7 +12,7 @@ function Navbar() {
     const [showLocationModal, setShowLocationModal] = useState(false);
     const [showGuestsModal, setShowGuestsModal] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState("Helsinki, Finland");
-    const [selectedGuests, setSelectedGuests] = useState("1 Guest");
+    const [selectedGuests, setSelectedGuests] = useState("Guest");
 
     const handleCloseLocationModal = () => setShowLocationModal(false);
     const handleShowLocationModal = () => setShowLocationModal(true);
@@ -47,7 +47,7 @@ function Navbar() {
 
                         <Modal show={showLocationModal} onHide={handleCloseLocationModal} dialogClassName="modal-top modal-fullscreen tamaño">
                             <Modal.Header closeButton>
-                                <Modal.Title className='typography'></Modal.Title>
+                                <Modal.Title className='typography'>Edit your search</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
 
@@ -57,6 +57,11 @@ function Navbar() {
                                 <div className='h-100 d-flex justify-content-around align-items-center'>
                                     <Location></Location>
                                     <Select></Select>
+                                    <div className='h-100 d-flex justify-content-center align-items-start' >
+                                        <Button variant="secondary" onClick={handleCloseLocationModal}>
+                                            search
+                                        </Button>
+                                    </div>
 
 
                                 </div>
@@ -67,12 +72,8 @@ function Navbar() {
 
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="secondary" onClick={handleCloseLocationModal}>
-                                    Close
-                                </Button>
-                                <Button variant="primary">
-                                    Save changes
-                                </Button>
+
+
                             </Modal.Footer>
                         </Modal>
 
@@ -83,7 +84,7 @@ function Navbar() {
 
                         <Modal show={showGuestsModal} onHide={handleCloseGuestsModal} dialogClassName="modal-top modal-fullscreen tamaño">
                             <Modal.Header closeButton>
-                                <Modal.Title></Modal.Title>
+                                <Modal.Title>Edit your search</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
 
@@ -92,6 +93,11 @@ function Navbar() {
                                 <div className='h-100 d-flex justify-content-around align-items-center'>
                                     <Location></Location>
                                     <Select></Select>
+                                    <div className='h-100 d-flex justify-content-center align-items-start' >
+                                        <Button variant="secondary" onClick={handleCloseGuestsModal}>
+                                            search
+                                        </Button>
+                                    </div>
 
 
                                 </div>
@@ -100,12 +106,7 @@ function Navbar() {
 
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="secondary" onClick={handleCloseGuestsModal}>
-                                    Close
-                                </Button>
-                                <Button variant="primary">
-                                    Save changes
-                                </Button>
+                               
                             </Modal.Footer>
                         </Modal>
 

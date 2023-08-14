@@ -11,7 +11,7 @@ const Location = () => {
     };
 
     return (
-        <div className='h-100 d-flex flex-column justify-content-center align-items-start gap-4'> 
+        <div className='h-100 d-flex flex-column justify-content-center align-items-start gap-3'> 
             <div className='texto'>
                 <input
                     type="text"
