@@ -1,77 +1,52 @@
-import React from 'react'
-
-export default function Navbar() {
 
 
 
+import React, { useState } from 'react';
 
+function Select() {
+  const [contador1, setContador1] = useState(0);
+  const [contador2, setContador2] = useState(0);
 
-    return (
+  const aumentarContador1 = () => {
+    setContador1(contador1 + 1);
+  };
 
-        <div className=''>
+  const disminuirContador1 = () => {
+    setContador1(contador1 - 1);
+  };
 
-            <div className=''>
+  const aumentarContador2 = () => {
+    setContador2(contador2 + 1);
+  };
 
-                <div class="d-flex justify-content-around align-items-center m-3 gap-2">
-                    <div className='w-50 '>
-                        <div class="form-outline border rounded-8">
-                            <input type="text" id="typeText" class="form-control" />
-                            <label class="form-label" for="typeText">LOCATION</label>
-                        </div>
-                    </div>
+  const disminuirContador2 = () => {
+    setContador2(contador2 - 1);
+  };
 
-                    <div className='w-50'>
-                        <div class="form-outline border rounded-8 ">
-                            <input type="text" id="typeText" class="form-control" />
-                            <label class="form-label" for="typeText">GUEST</label>
-                        </div>
-                    </div>
-
-
-                    <div>
-                        <div class="">
-
-                            <form class="d-flex input-group w-auto ">
-                                <input
-                                    type="search"
-                                    class="form-control  rounded-9"
-                                    placeholder="Search"
-                                    aria-label="Search"
-                                    aria-describedby="search-addon"
-                                />
-                                <span class="input-group-text border-0" id="search-addon">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </form>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-
-
-            </div>
-
-            <div>
-
-
-
-                
-            </div>
-
-
-
-
+  return (
+    <div className='gap-3 m-2'>
+      
+      <div >
+        <p className='  texto'>Adult </p>
+        <p className='texto'>Age 13 or above </p>
+        <div className='h-100 d-flex justify-content-between align-items-center gap-2'>
+          <button className="style" onClick={disminuirContador1}>-</button>
+          <p className=''>{contador1}</p>
+          <button className="style" onClick={aumentarContador1}>+</button>
         </div>
-
-
-
-
-
-
-
-    )
+      </div>
+      <div>
+        <p className='texto'>Children</p>
+        <p className='texto'>Age 2-12</p>
+        <div className='h-100 d-flex justify-content-between align-items-center gap-2'>
+          <button className="style" onClick={disminuirContador2}>-</button>
+          <p className='h-'>{contador2}</p>
+          <button className="style" onClick={aumentarContador2}>+</button>    
+          
+        </div>
+      </div>
+    </div>
+  );
 }
+
+export default Select;

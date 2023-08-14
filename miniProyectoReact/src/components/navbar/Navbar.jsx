@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import busqueda from "../../img/busqueda.png";
 import Location from '../location/Location';
-
+import Select from '../select/Select';
 
 
 function Navbar() {
@@ -54,11 +54,17 @@ function Navbar() {
 
 
                                 {/* Dropdown content Select location */}
-                                <Location></Location>
+                                <div className='h-100 d-flex justify-content-around align-items-center'>
+                                    <Location></Location>
+                                    <Select></Select>
+
+
+                                </div>
 
 
 
-                                
+
+
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={handleCloseLocationModal}>
@@ -77,20 +83,21 @@ function Navbar() {
 
                         <Modal show={showGuestsModal} onHide={handleCloseGuestsModal} dialogClassName="modal-top modal-fullscreen tamaño">
                             <Modal.Header closeButton>
-                                <Modal.Title>Select Guests</Modal.Title>
+                                <Modal.Title></Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
+
+
                                 {/* Dropdown content */}
-                                <div className="btn-group">
-                                    <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        {selectedGuests}
-                                    </button>
-                                    <ul className="dropdown-menu">
-                                        <li><button className="dropdown-item" type="button" onClick={() => handleGuestsSelect("1 Guest")}>1 Guest</button></li>
-                                        <li><button className="dropdown-item" type="button" onClick={() => handleGuestsSelect("2 Guests")}>2 Guests</button></li>
-                                        {/* Add more guests options here */}
-                                    </ul>
+                                <div className='h-100 d-flex justify-content-around align-items-center'>
+                                    <Location></Location>
+                                    <Select></Select>
+
+
                                 </div>
+
+
+
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={handleCloseGuestsModal}>

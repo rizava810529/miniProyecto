@@ -72,7 +72,7 @@ function App() {
 
                     <div><p className="card-text">{listing.city}, {listing.country}</p></div>
                     <div> <p className="card-text">{listing.type}</p></div>
-                    <div><p className="card-text"><img src={star} className="img-fluid" alt="star" />: {listing.rating}</p></div>
+                    <div><p className="card-text"><img src={star} className="img-fluid" alt="star" /> {listing.rating}</p></div>
 
                     <div className="d-flex justify-content-between align-items-center">{listing.beds !== null && <p className="card-text">Beds: {listing.beds}</p>}
                       {listing.superHost &&
