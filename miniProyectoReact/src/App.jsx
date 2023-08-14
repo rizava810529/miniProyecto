@@ -5,17 +5,13 @@ import Select from "./components/select/Select"
 import Footer from "./components/footer/Footer";
 import  star from "./img/star.png"
 
-
-
-
-
-
-
-
 function App() {
   // La variable data es la que va a almacenar los datos de "stays.json" y setData nos ayudará a guardar esos datos en esa variable. Es necesario que inicialicemos esa variable como un array vacío para evitar errores.
   const [data, setData] = useState([]);
-
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedAdults, setSelectedAdults] = useState(0);
+  const [selectedChildren, setSelectedChildren] = useState(0);
+  const [filteredData, setFilteredData] = useState([]);
   // Función para traer los datos de "stays.json".
   const getData = async () => {
     // Esta sentencia try-catch sirve para manejar los errores que se podrían generar al importar los datos de "stays.json".
@@ -35,22 +31,35 @@ function App() {
   }, []);
 
   // Puedes ver la variable data en consola.
-  console.log(data);
-  return (
-    <>
+  /* console.log(data); */
 
-      
-      
-      
-      
-      
+  useEffect(() => {
+    const filterData = () => {
+      const filteredData = data.filter(listing => {
+        const locationMatch = selectedLocation === "" || listing.city.includes(selectedLocation);
+        const guestsMatch = listing.maxGuests >= selectedAdults + selectedChildren;
+        return locationMatch && guestsMatch;
+      });
+      return filteredData;
+    };
+
+    const updatedFilteredData = filterData();
+    setFilteredData(updatedFilteredData);
+  }, [selectedLocation, selectedAdults, selectedChildren, data]);  
+/* console.log(data); */
+
+  return (
+     <>    
       
       <Navbar></Navbar>
       <div className="app m-5 ">
         <h1 className="title-up">Stays in Finland</h1>
         <div className="card-container ">
           <div className="row ">
-            {data.slice(0, 12).map((listing, index) => (
+          {filteredData.length === 0 ? (
+            <p>No results found.</p>
+          ) : 
+            filteredData.slice(0, 12).map((listing, index) => (
               <div key={index} className="col-md-4 mb-4">
                 <div className="card h-100" style={{ height: "60%" }}>
                   <div className="bg-image hover-overlay ripple img-style rounded-8 border" data-mdb-ripple-color="light">
@@ -86,12 +95,8 @@ function App() {
           </div>
         </div>
       </div>
-      <Footer/>
-    
       
-
-
-
+      <Footer/>
 
     </>
   );

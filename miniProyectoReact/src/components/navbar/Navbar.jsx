@@ -10,8 +10,10 @@ import Select from '../select/Select';
 
 function Navbar() {
     const [showLocationModal, setShowLocationModal] = useState(false);
-    const [showGuestsModal, setShowGuestsModal] = useState(false);
+    
     const [selectedLocation, setSelectedLocation] = useState("Helsinki, Finland");
+
+    const [showGuestsModal, setShowGuestsModal] = useState(false); 
     const [selectedGuests, setSelectedGuests] = useState("Guest");
 
     const handleCloseLocationModal = () => setShowLocationModal(false);
@@ -33,7 +35,7 @@ function Navbar() {
     return (
         <>
 
-            <nav className="navbar bg-body-tertiary">
+            <nav className="navbar bg-body-tertiary ">
                 <div className="container-fluid">
                     <a className="navbar-brand">
                         <img src={logo} className="img-fluid" alt="Logo" />
@@ -45,7 +47,7 @@ function Navbar() {
                             {selectedLocation}
                         </button>
 
-                        <Modal show={showLocationModal} onHide={handleCloseLocationModal} dialogClassName="modal-top modal-fullscreen tamaño">
+                        <Modal show={showLocationModal} onHide={handleCloseLocationModal} dialogClassName="modal-top modal-fullscreen tamaño modalLocation">
                             <Modal.Header closeButton>
                                 <Modal.Title className='typography'>Edit your search</Modal.Title>
                             </Modal.Header>
@@ -82,7 +84,7 @@ function Navbar() {
                             {selectedGuests}
                         </button>
 
-                        <Modal show={showGuestsModal} onHide={handleCloseGuestsModal} dialogClassName="modal-top modal-fullscreen tamaño">
+                        <Modal show={showGuestsModal} onHide={handleCloseGuestsModal} dialogClassName="modal-top modal-fullscreen tamaño modalGuest">
                             <Modal.Header closeButton>
                                 <Modal.Title>Edit your search</Modal.Title>
                             </Modal.Header>
