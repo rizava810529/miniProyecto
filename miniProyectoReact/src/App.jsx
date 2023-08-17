@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import "./App.css"
+import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-import Select from "./components/select/Select"
 import Footer from "./components/footer/Footer";
-import  star from "./img/star.png"
+import star from "./img/star.png";
 
 function App() {
   // La variable data es la que va a almacenar los datos de "stays.json" y setData nos ayudará a guardar esos datos en esa variable. Es necesario que inicialicemos esa variable como un array vacío para evitar errores.
   const [data, setData] = useState([]);
-  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("Helsinki, Finland");
   const [selectedAdults, setSelectedAdults] = useState(0);
   const [selectedChildren, setSelectedChildren] = useState(0);
   const [filteredData, setFilteredData] = useState([]);
@@ -35,69 +34,99 @@ function App() {
 
   useEffect(() => {
     const filterData = () => {
-      const filteredData = data.filter(listing => {
-        const locationMatch = selectedLocation === "" || listing.city.includes(selectedLocation);
-        const guestsMatch = listing.maxGuests >= selectedAdults + selectedChildren;
-        return locationMatch && guestsMatch;
+      const filteredData = data.filter((listing) => {
+        const locationCityAndCountry = `${listing.city}, ${listing.country}`;
+        const locationMatch =
+          selectedLocation === "" || locationCityAndCountry.includes(selectedLocation);
+        // PENDIENTE
+        /* const guestsMatch =
+          listing.maxGuests >= selectedAdults + selectedChildren; */
+        return locationMatch /* && guestsMatch */;
       });
       return filteredData;
     };
 
     const updatedFilteredData = filterData();
     setFilteredData(updatedFilteredData);
-  }, [selectedLocation, selectedAdults, selectedChildren, data]);  
-/* console.log(data); */
+  }, [selectedLocation, selectedAdults, selectedChildren, data]);
 
   return (
-     <>    
-      
-      <Navbar></Navbar>
+    <>
+      <Navbar
+        setSelectedLocation={setSelectedLocation}
+        selectedLocation={selectedLocation}
+      />
       <div className="app m-5 ">
         <h1 className="title-up">Stays in Finland</h1>
         <div className="card-container ">
           <div className="row ">
-          {filteredData.length === 0 ? (
-            <p>No results found.</p>
-          ) : 
-            filteredData.slice(0, 12).map((listing, index) => (
-              <div key={index} className="col-md-4 mb-4">
-                <div className="card h-100" style={{ height: "60%" }}>
-                  <div className="bg-image hover-overlay ripple img-style rounded-8 border" data-mdb-ripple-color="light">
-                    <img
-                      src={listing.photo}
-                      alt={listing.title}
-                      className="img-fluid"
-                      style={{ aspectRatio: "5/3" }}
+            {filteredData.length === 0 ? (
+              <p>No results found.</p>
+            ) : (
+              filteredData.slice(0, 12).map((listing, index) => (
+                <div key={index} className="col-md-4 mb-4">
+                  <div className="card h-100" style={{ height: "60%" }}>
+                    <div
+                      className="bg-image hover-overlay ripple img-style rounded-8 border"
+                      data-mdb-ripple-color="light"
+                    >
+                      <img
+                        src={listing.photo}
+                        alt={listing.title}
+                        className="img-fluid"
+                        style={{ aspectRatio: "5/3" }}
+                      />
+                      <a href="#!">
+                        <div
+                          className="mask"
+                          style={{
+                            backgroundColor: "rgba(251, 251, 251, 0.15)",
+                          }}
+                        ></div>
+                      </a>
+                    </div>
+                    <div className="card-body d-flex flex-column ">
+                      <div>
+                        <p className="card-text">
+                          {listing.city}, {listing.country}
+                        </p>
+                      </div>
+                      <div>
+                        {" "}
+                        <p className="card-text">{listing.type}</p>
+                      </div>
+                      <div>
+                        <p className="card-text">
+                          <img src={star} className="img-fluid" alt="star" />{" "}
+                          {listing.rating}
+                        </p>
+                      </div>
 
-                    />
-                    <a href="#!">
-                      <div
-                        className="mask"
-                        style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-                      ></div>
-                    </a>
-                  </div>
-                  <div className="card-body d-flex flex-column ">
+                      <div className="d-flex justify-content-between align-items-center">
+                        {listing.beds !== null && (
+                          <p className="card-text">Beds: {listing.beds}</p>
+                        )}
+                        {listing.superHost && (
+                          <p className="card-text-host w-45 rounded-8 border">
+                            Superhost
+                          </p>
+                        )}
+                      </div>
 
-                    <div><p className="card-text">{listing.city}, {listing.country}</p></div>
-                    <div> <p className="card-text">{listing.type}</p></div>
-                    <div><p className="card-text"><img src={star} className="img-fluid" alt="star" /> {listing.rating}</p></div>
-
-                    <div className="d-flex justify-content-between align-items-center">{listing.beds !== null && <p className="card-text">Beds: {listing.beds}</p>}
-                      {listing.superHost &&
-                        <p className="card-text-host w-45 rounded-8 border">Superhost</p>}</div>
-
-                    <div><h2 className="card-text-title d-flex justify-content-start align-items-center">{listing.title}</h2></div>
+                      <div>
+                        <h2 className="card-text-title d-flex justify-content-start align-items-center">
+                          {listing.title}
+                        </h2>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>
-      
-      <Footer/>
-
+      <Footer />
     </>
   );
 }
